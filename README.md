@@ -48,7 +48,11 @@ A website visualizing performance of teams in IPL.
   ```
   
 ## Screenshots
-- 
+<img src="https://github.com/jeel2308/IPL-trivia/blob/master/Screenshots/Screenshot%202020-09-29%20195714.png" width="300" />
+
+<img src="https://github.com/jeel2308/IPL-trivia/blob/master/Screenshots/Screenshot%202020-09-29%20195748.png" width="300" />
+
+<img src="https://github.com/jeel2308/IPL-trivia/blob/master/Screenshots/Screenshot%202020-09-29%20195810.png" width="300" />
 
   
   
