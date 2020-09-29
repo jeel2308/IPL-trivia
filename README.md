@@ -15,6 +15,13 @@ A website visualizing performance of teams in IPL.
 - [React Loadable](https://github.com/jamiebuilds/react-loadable) - To improve website loading performance
 - [React Loader Spinner](https://github.com/mhnpd/react-loader-spinner) - To show loader when website is Loading
 
+## Features
+
+- It is a progressive web app so it will cache upcoming requests. So it will reduce network traffic and improve user experience and we can also use it offline once it has enough    data in cache. It uses service-worker for achieving this.
+- It uses a technique known as lazy loading for improve loading time. So it requests for only those chunks which are required now instead of whole big chunk.It uses React    
+  loadable component for achieve this. 
+- It is responsive. It will work correctly for screen size>=4 inches.
+
 ## For Development
 
 - You will need Node or Yarn to run the application.You can download it from here - [Node](https://nodejs.org/), [Yarn](https://yarnpkg.com).
@@ -44,7 +51,7 @@ A website visualizing performance of teams in IPL.
   // if you are using yarn
   yarn build
   // if you are using npm
-  // npm run build
+   npm run build
   ```
   
 ## Screenshots
