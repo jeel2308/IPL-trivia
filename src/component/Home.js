@@ -7,7 +7,7 @@ import BestPlayers from "./BestPlayers";
 import BarGraph from "./BarGraph";
 import MyPieChart from "./MyPieChart";
 import {giveSummaryOverAllTeam} from "../utilities";
-import "../css/home.css";
+
 
 
 
@@ -21,10 +21,12 @@ function Home(){
     const [batFirstWin,setBatFirstWin] = useState([]);
     const [winFirstToss,setWinFirstToss] = useState([]);
 
+    // callback function to find winning summary over all teams
     function winFirstTossOverall(match){
         return (match["toss_winner"]===match["winner"]);
     }
 
+    // callback function to find winning chances for batting first team
     function winFirstBatOverall(match){
         if((match["toss_winner"]===match["team1"] && match["toss_decision"]==="bat" )
                     || (match["toss_winner"]!==match["team1"] && match["toss_decision"]==="field")) {
@@ -48,6 +50,7 @@ function Home(){
         setBatFirstWin(giveSummaryOverAllTeam(year,winFirstBatOverall));
     }
 
+    //set state when component initially mounts
     useEffect(()=>{
         const summary = teamWinSummary('overall');
         setWinData(summary);
@@ -68,7 +71,7 @@ function Home(){
          <div id='home_page'>
 
              <div className='welcome_msg'>
-                 <div>Welcome To IPLTRIVIA</div>
+                 <div>Welcome To IPL-TRIVIA</div>
                  <div>Know amazing stats of your team</div>
              </div>
 
@@ -103,7 +106,7 @@ function Home(){
                      <MyPieChart teamColors={["#0081E9","#FF822A"]} data={batFirstWin} />
                  </div>
                  <div className='child_container'>
-                      <div className='child_container_label'>Winning Chances for toss Wining Team</div>
+                      <div className='child_container_label'>Winning Chances for toss Winning Team</div>
                       <MyPieChart data={winFirstToss} teamColors={["#0081E9","#FF822A"]} />
                  </div>
              </div>

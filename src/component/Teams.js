@@ -3,11 +3,11 @@ import {teams,teamShortForms} from "../data";
 import {giveSummaryOfATeam} from "../utilities";
 import {colorMap,colors} from "../config";
 import MyPieChart from "./MyPieChart";
-import "../css/teams.css";
+
 
 
 function Teams(){
-
+    const firstTeam = teams[0];
     const [team,setTeam] = useState(teams[0]);
     const [year,setYear] = useState("overall");
     const [tossWinMatchWin,setTossWinMatchWin] = useState([]);
@@ -16,6 +16,7 @@ function Teams(){
     const [winFirstBat,setWinFirstBat] = useState([]);
     const [winFirstField,setWinFirstField] = useState([]);
 
+    // callback function to find chances of winning match for a team winning toss
     function winTossWinMatchForATeam(team,match){
         if(match["toss_winner"]===team){
             if(match["winner"]===team) return 2;
@@ -23,7 +24,7 @@ function Teams(){
         }
         return 0;
     }
-
+    // callback function to find chances of winning match for a team losing toss
     function loseTossWinMatchForATeam(team,match){
         if(match["toss_winner"]!==team){
             if(match["winner"]===team) return 2;
@@ -32,6 +33,7 @@ function Teams(){
         return 0;
     }
 
+    // callback function to find chances of winning match for batting first team
     function winFirstBatForTeam(team,match){
         if((match["toss_winner"]===team && match["toss_decision"]==="bat")
             || (match["toss_winner"]!==team && match["toss_decision"]==="field")) {
@@ -41,6 +43,7 @@ function Teams(){
         return 0;
     }
 
+    // callback function to find chances of winning match for fielding first team
     function winFirstFieldForTeam(team,match){
         if((match["toss_winner"]!==team && match["toss_decision"]==="bat")
                     || (match["toss_winner"]===team && match["toss_decision"]==="field")) {
@@ -50,6 +53,7 @@ function Teams(){
         return 0;
     }
 
+    // function for updating different summaries of team
     function updateState(year,team){
         setTossWinMatchWin(giveSummaryOfATeam(year,team,winTossWinMatchForATeam));
         setTossLoseMatchWin(giveSummaryOfATeam(year,team,loseTossWinMatchForATeam));
@@ -57,6 +61,7 @@ function Teams(){
         setWinFirstField(giveSummaryOfATeam(year,team,winFirstFieldForTeam));
     }
 
+    // function for updating team color
     function updateColors(team){
         const teamColors  = [];
         teamColors.push( colors[ colorMap.get(teamShortForms.get(team)) ] );
@@ -64,10 +69,12 @@ function Teams(){
         setTeamColors(teamColors);
     }
 
+    // set summaries when component mounts
     useEffect(()=>{
-        updateState('overall',teams[0]);
-        updateColors(teams[0]);
+        updateState('overall',firstTeam);
+        updateColors(firstTeam);
     },[]);
+
 
     function upDateTeam(e){
         const val = e.target.value;
@@ -105,6 +112,7 @@ function Teams(){
                 </select>
             </div>
           {
+              // if team either won or loss toss and won match means it has played match(Assumption : team wins atleast 1 match)
               (tossWinMatchWin.length>0 || tossLoseMatchWin.length>0)?(
                   <>
               <div className={'team_performance_header'}>Winning Chances of {team} in different situations</div>

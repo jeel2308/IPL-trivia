@@ -1,14 +1,21 @@
 import React,{useState} from 'react';
 import './data/index';
 import './App.css';
-
+//css for home
+import "./css/home.css";
+//css for teams
+import "./css/teams.css";
+//css for two-teams
+import "./css/twoteams.css";
 import {BrowserRouter as Router,Route,NavLink,Switch} from 'react-router-dom';
 import Home from "./component/Home";
 import * as url from "./Images/bar.png";
 import Loadable from "react-loadable";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import TwoTeams from "./component/TwoTeams";
 import Loader from 'react-loader-spinner';
 
+// loading component which is rendered when other components are loading
 function LoadingComponent() {
 
 	 return(
@@ -25,16 +32,16 @@ function LoadingComponent() {
  }
 
 
-
+// for lazy loading
 const Teams = Loadable({
     loader : () => import('./component/Teams'),
     loading : LoadingComponent
 });
 
-const TwoTeams = Loadable({
-    loader : () => import('./component/TwoTeams'),
-    loading : LoadingComponent
-})
+// const TwoTeams = Loadable({
+//     loader : () => import('./component/TwoTeams'),
+//     loading : LoadingComponent
+// })
 
 
 
@@ -47,8 +54,8 @@ pathToTextMapping.set("/two-teams","Team and Opponent");
 
 function App() {
 
-    const [isVisible,setVisibility] = useState(false);
-    const [activeLinkName,setActiveLinkName] = useState("Home");
+    const [isVisible,setVisibility] = useState(false); //for toggeling visiblity of small navbar
+    const [activeLinkName,setActiveLinkName] = useState("Home"); // for displaying active link for small navbar
 
     function activeLink(match,location){
         if(match) {
@@ -66,13 +73,13 @@ function App() {
             <ul id={'navbar'}>
 
                 <li>
-                    <NavLink to='/' isActive={activeLink}>Home</NavLink>
+                    <NavLink to='/' exact={true} isActive={activeLink} >Home</NavLink>
                 </li>
                 <li>
-                    <NavLink to='/teams' isActive={activeLink}>Stats for team</NavLink>
+                    <NavLink to='/teams' isActive={activeLink} >Stats for team</NavLink>
                 </li>
                 <li>
-                    <NavLink to='/two-teams' isActive={activeLink}>Team and Opponent</NavLink>
+                    <NavLink to='/two-teams' isActive={activeLink} >Team and Opponent</NavLink>
                 </li>
             </ul>
 
@@ -81,7 +88,7 @@ function App() {
                     <div className='active_content'>{activeLinkName} </div>
                     <div className='img_parent'><img src={url} alt='img' onClick={updateVisibility}/></div>
                 </div>
-                <div style={{display : isVisible?"initial":"none"}}>
+                <div style={{display : isVisible?"initial":"none"}} >
                     <div onClick={updateVisibility}><NavLink to='/'>Home</NavLink></div>
                     <div onClick={updateVisibility}><NavLink to='/teams'>stats for team</NavLink></div>
                     <div onClick={updateVisibility}><NavLink to='/two-teams'>Team and Opponent</NavLink></div>

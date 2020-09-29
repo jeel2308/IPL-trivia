@@ -1,8 +1,9 @@
 
 body {
   margin : 0;
-  background-image: url("../src/Images/IPL.jpg");
-  background-size: cover;
+  /*background-image: url("../src/Images/IPL.jpg");*/
+  /*background-size: cover;*/
+  background-color: #004BA0;
 }
 
 #navbar {
@@ -32,6 +33,7 @@ body {
   display: block;
   padding: 10px 15px;
 }
+
 
 .active_content {
   color: white;

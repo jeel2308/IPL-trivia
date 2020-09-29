@@ -1,6 +1,7 @@
 import data from "../data";
 import {teamShortForms} from "../data";
 
+// function to find maximum match wins over two teams
 function winSummaryForTwoTeams(team1,team2,year){
     const years = Object.keys(data);
     const matchData = {};
@@ -14,6 +15,7 @@ function winSummaryForTwoTeams(team1,team2,year){
 
 }
 
+// function to find maximum match wins over all teams
 function teamWinSummary(year,matchData){
     const summary = [];
     const matchSummary = {};
@@ -56,6 +58,7 @@ function aggregateTeamWin(matches,matchSummary) {
     });
 }
 
+// function to find best players of all teams,based on maximum player of match winners
 function findBestPlayers(year,matchData){
     const bestPlayersObj = {};
     let bestPlayersArr = [];
@@ -89,8 +92,7 @@ function aggregateBestPlayers(matches,bestPlayersObj){
     });
 }
 
-
-
+// function to find best players of two teams,based on maximum player of match winners
 function findPlayersTeamWise(team1,team2,year){
     const years = Object.keys(data);
     const matchData = {};
@@ -103,6 +105,7 @@ function findPlayersTeamWise(team1,team2,year){
     return findBestPlayers(year,matchData);
 }
 
+// function to find summary of matches between two teams for a given criteria in callback function
 function giveSummaryOfTwoTeams(year,team1,team2,cb){
     const years = Object.keys(data);
     const matchData = {};
@@ -142,6 +145,7 @@ function aggregateOverTwoTeams(matches,cb,obj,team1){
     });
 }
 
+// function to find summary of a team performance for a given criteria in callback function
 function giveSummaryOfATeam(year,team,cb){
     const years = Object.keys(data);
     const matchData = {};
@@ -181,6 +185,7 @@ function aggregateOverATeam(matches,cb,obj,team){
     });
 }
 
+// function to find performance summary over all teams for a given criteria in callback function
 function giveSummaryOverAllTeam(year,cb){
     const years = Object.keys(data);
     const summary = {

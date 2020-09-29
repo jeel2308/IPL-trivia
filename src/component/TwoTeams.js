@@ -4,27 +4,28 @@ import {colorMap,colors} from "../config";
 import BarGraph from "./BarGraph";
 import {winSummaryForTwoTeams,findPlayersTeamWise,giveSummaryOfTwoTeams} from "../utilities";
 import BestPlayers from "./BestPlayers";
-import "../css/twoteams.css";
 import MyPieChart from "./MyPieChart";
 
 
 
 function TwoTeams(){
-    const [firstTeam,setFirstTeam] = useState(teams[0]);
-    const [secondTeam,setSecondTeam] = useState(teams[1]);
-    const [year,setYears] = useState('overall');
 
-    const [winData,setWinData] = useState([]);
-    const [teamColors,setTeamColors] = useState(colors);
+    const [firstTeam,setFirstTeam] = useState(teams[0]); // state for first team
+    const [secondTeam,setSecondTeam] = useState(teams[1]); // state for second team
+    const [year,setYears] = useState('overall'); //state for years
 
-    const [tossWinMatchWin1,setTossWinMatchWin1] = useState([]);
-    const [tossWinMatchWin2,setTossWinMatchWin2] = useState([]);
+    const [winData,setWinData] = useState([]); //state for winning summary
+    const [teamColors,setTeamColors] = useState(colors); //state for team colors
 
-    const [batFirstMatchWin1,setBatFirstMatchWin1] = useState([]);
-    const [batFirstMatchWin2,setBatFirstMatchWin2] = useState([]);
+    const [tossWinMatchWin1,setTossWinMatchWin1] = useState([]); // winning summary for winning toss team(for team1)
+    const [tossWinMatchWin2,setTossWinMatchWin2] = useState([]); // winning summary for winning toss team(for team2)
 
-    const [topPlayers,setTopPlayers] = useState([]);
+    const [batFirstMatchWin1,setBatFirstMatchWin1] = useState([]); // winning summary for first batting team(for team1)
+    const [batFirstMatchWin2,setBatFirstMatchWin2] = useState([]); //// winning summary for first batting team(for team1)
 
+    const [topPlayers,setTopPlayers] = useState([]); //best players of both team
+
+    //set state when component mounts initially
     useEffect(()=>{
         updateTeamState(teams[0],teams[1],"overall");
     },[]);
@@ -34,6 +35,7 @@ function TwoTeams(){
         updateTeamState(firstTeam,secondTeam,e.target.value);
     }
 
+    // callback function to find chances of winning match for a team winning toss
     function winTossWinMatchSummary(match,team1){
         if(match["toss_winner"]===team1){
             if(match["winner"]===team1){
@@ -44,6 +46,7 @@ function TwoTeams(){
         return 0;
     }
 
+    // callback function to find chances of winning match for a team batting first
     function winFirstBat(match,team1){
         if((match["toss_winner"]===team1 && match["toss_decision"]==="bat")
                     || (match["toss_winner"]!==team1 && match["toss_decision"]==="field")) {
@@ -123,6 +126,7 @@ function TwoTeams(){
 
                 <div className='home_container'>
                 <div className='child_container'>
+                    {/* if this array is empty means team never won match by winning toss */}
                      { tossWinMatchWin1.length>0 ? (
                          <>
                            <div className='child_container_label'>When {firstTeam} won toss</div>
@@ -134,6 +138,7 @@ function TwoTeams(){
                      </div>
 
                      <div className={'child_container'}>
+                         {/* if this array is empty means team never won match by winning toss */}
                          {tossWinMatchWin2.length>0? (
                              <>
                              <div className='child_container_label'>When {secondTeam} won toss</div>
@@ -148,6 +153,7 @@ function TwoTeams(){
 
                 <div className='home_container'>
                         <div className='child_container'>
+                            {/* if this array is empty means team never won match by batting first */}
                             {batFirstMatchWin1.length>0 ?
                                 (<>
                                 <div className='child_container_label'>When {firstTeam} bat first</div>
@@ -159,6 +165,7 @@ function TwoTeams(){
                         </div>
 
                         <div className='child_container'>
+                            {/* if this array is empty means team never won match by batting first */}
                             {batFirstMatchWin2.length>0 ? (
                                 <>
                                 <div className='child_container_label'>When {secondTeam} bat first</div>
