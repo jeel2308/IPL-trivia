@@ -1,38 +1,76 @@
-.App {
-  text-align: center;
+
+body {
+  margin : 0;
+  background-image: url("../src/Images/IPL.jpg");
+  background-size: cover;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#navbar {
+  display: none;
+  list-style-type: none;
+  background-color : rgb(25,56,138);
+  /*display: flex;*/
+  font-size: 20px;
+  padding: 20px 15px;
+  margin : 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#navbar li{
+  padding : 0 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+#navbar li a,.small_screen_navbar a{
   color: white;
+  text-decoration: none;
 }
 
-.App-link {
-  color: #61dafb;
+.small_screen_navbar {
+  background-color : rgb(25,56,138);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.small_screen_navbar a{
+  display: block;
+  padding: 10px 15px;
+}
+
+.active_content {
+  color: white;
+  padding: 10px 15px;
+  flex-grow: 1;
+}
+
+.small_screen_navbar div{
+  font-size: 20px;
+  margin-top : 0;
+}
+
+.navbar_parent {
+  margin-bottom: 20px;
+}
+
+.active_row_navbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.img_parent {
+  text-align: right;
+  padding-right: 15px;
+}
+
+.loader {
+  position: absolute;
+  top : 50%;
+  left : 50%;
+  transform: translate(-50%,-50%);
+  z-index: 1;
+}
+
+@media screen and (min-width : 540px){
+  #navbar{
+    display: flex;
   }
-  to {
-    transform: rotate(360deg);
+  .small_screen_navbar {
+    display: none;
   }
 }

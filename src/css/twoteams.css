@@ -1,0 +1,37 @@
+.select_box_child {
+    display: flex;
+    flex-direction: column;
+}
+
+.select_box_child .margin20:last-child{
+     margin-left: 20px;
+    margin-top : 0;
+}
+
+.margin_bottom {
+    margin-bottom: 20px;
+}
+
+.responsive_at_1010 {
+    flex-direction: column;
+}
+@media screen and (min-width: 728px){
+    .select_box_child {
+        flex-direction: row;
+    }
+
+
+    .select_box_child .margin20:last-child{
+     margin-left: 0;
+    margin-top : 20px;
+   }
+}
+
+@media screen and (min-width: 1010px){
+    .responsive_at_1010 {
+    flex-direction: row;
+    }
+    .margin_bottom {
+        margin-top: 20px;
+    }
+}
