@@ -18,8 +18,8 @@ A website visualizing performance of teams in IPL.
 ## Features
 
 - It is a progressive web app so it will cache upcoming requests. So it will reduce network traffic and improve user experience and we can also use it offline once it has enough    data in cache. It uses service-worker for achieving this.
-- It uses a technique known as lazy loading for improve loading time. So it requests for only those chunks which are required now instead of whole big chunk.It uses React    
-  loadable component for achieve this. 
+- It uses a technique known as lazy loading for improve loading time. So it requests for only those chunks which are required now instead of whole big chunk.  
+  It uses React loadable component for achieve this. 
 - It is responsive. It will work correctly for screen size>=4 inches.
 
 ## For Development
