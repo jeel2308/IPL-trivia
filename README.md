@@ -3,7 +3,7 @@
 > This project was built for a task at interview process at [Atlan](https://atlan.com/).  
 > This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).  
 
-View Demo at - https://distracted-mirzakhani-33cb20.netlify.app/
+View Demo at - https://ipl-trivia.netlify.app/
 
 A website visualizing performance of teams in IPL.
 
