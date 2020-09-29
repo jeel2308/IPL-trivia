@@ -37,6 +37,18 @@ A website visualizing performance of teams in IPL.
   
 - Now go on http://localhost:3000/ in a browser to see the app
 
+## For Production
+
+- run following commands
+  ```
+  // if you are using yarn
+  yarn build
+  // if you are using npm
+  // npm run build
+  ```
+  
+## Screenshots
+- 
 
   
   
